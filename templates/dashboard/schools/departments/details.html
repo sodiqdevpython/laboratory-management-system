@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-Department Details
-{% endblock %}
 
 
 {% block styles %}
@@ -17,24 +14,24 @@ Department Details
                 <div class="row">
                     <div class="col-md-12 ">
                         <div class="m-3 p-3 shadow-sm">
-                            <h3 class="text-center py-3">Department Details</h3>
+                            <h3 class="text-center py-3">Bo'lim tafsilotlari</h3>
                             <div class="table-responsive">
                                 <table class="table table-striped text-center">
                                     <tbody>
                                         <tr>
-                                            <th>Name</th>
+                                            <th>Nomi</th>
                                             <td>{{ department.name }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Date Added</th>
+                                            <th>Qo'shilgan sana</th>
                                             <td>{{ department.created_on }}</td>
                                         </tr>
                                         {% comment %} <tr>
-                                            <th>Courses</th>
+                                            <th>Kurslar</th>
                                             <td>{{ department.courses_in_department_count }}</td>
                                         </tr> {% endcomment %}
                                         <tr>
-                                            <th>Last Update</th>
+                                            <th>Oxirgi yangilash</th>
                                             <td>{{ department.updated_on }}</td>
                                         </tr>
                                     </tbody>
@@ -43,7 +40,7 @@ Department Details
                         </div>
                         <div class="text-center">
                             <a href="{% url 'schools:department_edit' department.pk %}" class="mx-1">
-                                <button class="btn btn-md w-50 btn-primary">Edit</button>
+                                <button class="btn btn-md w-50 btn-primary">tahrirlash</button>
                             </a>
                         </div>
                     </div>
@@ -54,21 +51,20 @@ Department Details
         <div class="col-xl-12 col-md-12">
             <div class="card Recent-schools">
                 <div class="card-header">
-                    <h5>All Courses in {{department.name}} Department</h5>
+                    <h5>Barcha kurslar {{department.name}} kafedra</h5>
                 </div>
                 <div class="card-block px-0 py-3">
                     <div class="table-responsive">
 
                         <table class="table" id="data-table">
                             <div class="float-right">
-                                <a href="{% url 'schools:course_add' %}" class="label theme-bg2 text-white f-12">Add
-                                    Course</a>
+                                <a href="{% url 'schools:course_add' %}" class="label theme-bg2 text-white f-12">Kurs qo'shish</a>
                             </div>
                             <thead>
                                 <tr>
-                                    <th> Name </th>
-                                    <th> Course Code </th>
-                                    <th> Date Added </th>
+                                    <th> Nomi </th>
+                                    <th> ID </th>
+                                    <th> Qo'shilgan </th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -79,7 +75,7 @@ Department Details
                                     <td>{{ course.code }}</td>
                                     <td>{{ course.created_on }}</td>
                                     <td><a href="{% url 'schools:course_details' course.pk %}"
-                                            class="label theme-bg2 text-white f-12">View</a></td>
+                                            class="label theme-bg2 text-white f-12">ko'rish</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -90,20 +86,17 @@ Department Details
         </div>
         <div class="col-xl-12 col-md-12">
             <div class="card Recent-schools">
-                <div class="card-header">
-                    <h5>All Lecturers in {{department.name}} Department</h5>
-                </div>
                 <div class="card-block px-0 py-3">
                     <div class="table-responsive">
 
                         <table class="table" id="data-table">
                             <thead>
                                 <tr>
-                                    <th> Full Name </th>
-                                    <th> Gender </th>
-                                    <th> Contact </th>
-                                    <th> Status </th>
-                                    <th> Date Joined </th>
+                                    <th> Ism, familiya </th>
+                                    <th> Jins </th>
+                                    <th> Telefon raqam </th>
+                                    <th> Holat </th>
+                                    <th> Qo'shilgan sana </th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -114,14 +107,14 @@ Department Details
                                     <td>{{ user.gender }}</td>
                                     <td>{{ user.phone_number }}</td>
                                     {% if user.is_active %}
-                                    <td><span class="badge badge-pill badge-success">Active</span></td>
+                                    <td><span class="badge badge-pill badge-success">Aktiv</span></td>
                                     {% else %}
-                                    <td><span class="badge badge-pill badge-danger">Suspended</span></td>
+                                    <td><span class="badge badge-pill badge-danger">To'xtatildi</span></td>
                                     {% endif %}
                                     <td><i class="fas fa-circle text-c-green f-10 m-r-15"></i>{{ user.date_joined }}
                                     </td>
                                     <td><a href="{% url 'dashboard:lecturer_details' user.pk %}"
-                                            class="label theme-bg2 text-white f-12">View</a></td>
+                                            class="label theme-bg2 text-white f-12">ko'rish</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

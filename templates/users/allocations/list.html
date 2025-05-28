@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-All Equipment allocations
-{% endblock %}
 
 
 {% block styles %}
@@ -18,29 +15,28 @@ All Equipment allocations
 <div class="col-xl-12 col-md-12 tab-content">
     <div class="card recent-allocations tab-pane fade show active" id="pills-allocations" role="tabpanel" aria-labelledby="pills-allocations-tab">
         <div class="card-header">
-            <h5>All allocations</h5>
+            <h5>Barcha ajratmalar</h5>
         </div>
         <div class="card-block px-0 py-3">
             <div class="table-responsive">
                 <table class="table" id="data-table">
                     {% if request.user.user_type == 'Lab_Tech' %}
                     <div class="float-right">
-                        <a href="{% url 'users:new_allocation' %}" class="label theme-bg2 text-white f-12">Add
-                            allocation</a>
+                        <a href="{% url 'users:new_allocation' %}" class="label theme-bg2 text-white f-12">Qo'shish</a>
                     </div>
                     {% endif %}
                     <thead>
                         <tr>
-                            <th>Equipment</th>
-                            <th>Serial No.</th>
+                            <th>Jihoz</th>
+                            <th>Seriya raqami</th>
                             <th>
                                 {% if request.user.user_type == 'Student' or request.user.user_type == 'Lecturer' %}
-                                Allocated By
+                                tomonidan ajratilgan
                                 {% elif request.user.user_type == 'Lab_Tech' %}
-                                Allocated To
+                                uchun ajratilgan
                                 {% endif %}
                             </th>
-                            <th>Status</th>
+                            <th>Holat</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -63,13 +59,13 @@ All Equipment allocations
                                 {% endif %}
                             </td>
                             {% if allocation.is_returned %}
-                            <td><span class="badge badge-pill badge-success">Returned</span></td>
+                            <td><span class="badge badge-pill badge-success">Qaytgan</span></td>
                             {% else %}
-                            <td><span class="badge badge-pill badge-danger">Unreturned</span></td>
+                            <td><span class="badge badge-pill badge-danger">Qaytarilmagan</span></td>
                             {% endif %}
                             <td>{{ allocation.created_on }}</td>
                             <td><a href=" {% url 'users:allocation_details' allocation.pk %} "
-                                    class="label theme-bg2 text-white f-12">View</a></td>
+                                    class="label theme-bg2 text-white f-12">Ko'rish</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -79,25 +75,24 @@ All Equipment allocations
     </div>
     <div class="card recent-allocations tab-pane fade" id="pills-my-allocations" role="tabpanel" aria-labelledby="pills-my-allocations-tab">
         <div class="card-header">
-            <h5>My allocations</h5>
+            <h5>Mening ajratmalarim</h5>
         </div>
         <div class="card-block px-0 py-3">
             <div class="table-responsive">
                 <table class="table" id="data-table">
                     {% if request.user.user_type == 'Lab_Tech' %}
                     <div class="float-right">
-                        <a href="{% url 'users:new_allocation' %}" class="label theme-bg2 text-white f-12">Add
-                            allocation</a>
+                        <a href="{% url 'users:new_allocation' %}" class="label theme-bg2 text-white f-12">Qo'shish</a>
                     </div>
                     {% endif %}
                     <thead>
                         <tr>
-                            <th>Equipment</th>
+                            <th>Jihoz</th>
                             <th>
                                 {% if request.user.user_type == 'Student' or request.user.user_type == 'Lecturer' %}
-                                Allocated By
+                                tomonidan ajratilgan
                                 {% elif request.user.user_type == 'Lab_Tech' %}
-                                Allocated To
+                                kimga ajratilganligi
                                 {% endif %}
                             </th>
                             <th>Status</th>
@@ -116,13 +111,13 @@ All Equipment allocations
                                 {% endif %}
                             </td>
                             {% if allocation.is_returned %}
-                            <td><span class="badge badge-pill badge-success">Returned</span></td>
+                            <td><span class="badge badge-pill badge-success">Qaytgan</span></td>
                             {% else %}
-                            <td><span class="badge badge-pill badge-danger">Unreturned</span></td>
+                            <td><span class="badge badge-pill badge-danger">Qaytarilmagan</span></td>
                             {% endif %}
                             <td>{{ allocation.created_on }}</td>
                             <td><a href=" {% url 'users:allocation_details' allocation.pk %} "
-                                    class="label theme-bg2 text-white f-12">View</a></td>
+                                    class="label theme-bg2 text-white f-12">Ko'rish</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -132,22 +127,22 @@ All Equipment allocations
     </div>
     <div class="card recent-allocations tab-pane fade" id="pills-returned" role="tabpanel" aria-labelledby="pills-returned-tab">
         <div class="card-header">
-            <h5>Returned Equipment</h5>
+            <h5>Qaytarilgan uskunalar</h5>
         </div>
         <div class="card-block px-0 py-3">
             <div class="table-responsive">
                 <table class="table" id="data-table">
                     <thead>
                         <tr>
-                            <th>Equipment</th>
+                            <th>Uskunalar</th>
                             <th>
                                 {% if request.user.user_type == 'Student' or request.user.user_type == 'Lecturer' %}
-                                Allocated By
+                                Tomonidan ajratilgan
                                 {% elif request.user.user_type == 'Lab_Tech' %}
-                                Allocated To
+                                Kimga ajratilgan
                                 {% endif %}
                             </th>
-                            <th>Status</th>
+                            <th>Holat</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -163,13 +158,13 @@ All Equipment allocations
                                 {% endif %}
                             </td>
                             {% if allocation.is_returned %}
-                            <td><span class="badge badge-pill badge-success">Returned</span></td>
+                            <td><span class="badge badge-pill badge-success">Qaytgan</span></td>
                             {% else %}
-                            <td><span class="badge badge-pill badge-danger">Unreturned</span></td>
+                            <td><span class="badge badge-pill badge-danger">Qaytarilmagan</span></td>
                             {% endif %}
                             <td>{{ allocation.created_on }}</td>
                             <td><a href=" {% url 'users:allocation_details' allocation.pk %} "
-                                    class="label theme-bg2 text-white f-12">View</a></td>
+                                    class="label theme-bg2 text-white f-12">Ko'rish</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -179,22 +174,22 @@ All Equipment allocations
     </div>
     <div class="card recent-allocations tab-pane fade" id="pills-unreturned" role="tabpanel" aria-labelledby="pills-unreturned-tab">
         <div class="card-header">
-            <h5>Unreturned Equipment</h5>
+            <h5>Qaytarilmagan uskunalar</h5>
         </div>
         <div class="card-block px-0 py-3">
             <div class="table-responsive">
                 <table class="table" id="data-table">
                     <thead>
                         <tr>
-                            <th>Equipment</th>
+                            <th>Uskunalar</th>
                             <th>
                                 {% if request.user.user_type == 'Student' or request.user.user_type == 'Lecturer' %}
-                                Allocated By
+                                Tomonidan ajratilgan
                                 {% elif request.user.user_type == 'Lab_Tech' %}
-                                Allocated To
+                                Kimga ajratilgan
                                 {% endif %}
                             </th>
-                            <th>Status</th>
+                            <th>Holat</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -210,13 +205,13 @@ All Equipment allocations
                                 {% endif %}
                             </td>
                             {% if allocation.is_returned %}
-                            <td><span class="badge badge-pill badge-success">Returned</span></td>
+                            <td><span class="badge badge-pill badge-success">Qaytgan</span></td>
                             {% else %}
-                            <td><span class="badge badge-pill badge-danger">Unreturned</span></td>
+                            <td><span class="badge badge-pill badge-danger">Qaytarilmagan</span></td>
                             {% endif %}
                             <td>{{ allocation.created_on }}</td>
                             <td><a href=" {% url 'users:allocation_details' allocation.pk %} "
-                                    class="label theme-bg2 text-white f-12">View</a></td>
+                                    class="label theme-bg2 text-white f-12">Ko'rish</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -226,23 +221,23 @@ All Equipment allocations
     </div>
     <div class="card recent-allocations tab-pane fade" id="pills-damaged" role="tabpanel" aria-labelledby="pills-damaged-tab">
         <div class="card-header">
-            <h5>Unreturned Equipment</h5>
+            <h5>Qaytarilmagan uskunalar</h5>
         </div>
         <div class="card-block px-0 py-3">
             <div class="table-responsive">
                 <table class="table" id="data-table">
                     <thead>
                         <tr>
-                            <th>Equipment</th>
+                            <th>Jihozlar</th>
                             <th>
                                 {% if request.user.user_type == 'Student' or request.user.user_type == 'Lecturer' %}
-                                Allocated By
+                                Tomonidan ajratilgan
                                 {% elif request.user.user_type == 'Lab_Tech' %}
-                                Allocated To
+                                Kimga ajratilgan
                                 {% endif %}
                             </th>
-                            <th>Status</th>
-                            <th>Working Condition</th>
+                            <th>Holat</th>
+                            <th>Ishlash holati</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -258,18 +253,18 @@ All Equipment allocations
                                 {% endif %}
                             </td>
                             {% if allocation.is_returned %}
-                            <td><span class="badge badge-pill badge-success">Returned</span></td>
+                            <td><span class="badge badge-pill badge-success">Qaytgan</span></td>
                             {% else %}
-                            <td><span class="badge badge-pill badge-danger">Unreturned</span></td>
+                            <td><span class="badge badge-pill badge-danger">Qaytarilmagan</span></td>
                             {% endif %}
                             {% if allocation.equipment.is_damaged %}
-                            <td><span class="badge badge-pill badge-danger">Damaged</span></td>
+                            <td><span class="badge badge-pill badge-danger">Shikastlangan</span></td>
                             {% else %}
-                            <td><span class="badge badge-pill badge-success">Working</span></td>
+                            <td><span class="badge badge-pill badge-success">Ishlash</span></td>
                             {% endif %}
                             <td>{{ allocation.created_on }}</td>
                             <td><a href=" {% url 'users:allocation_details' allocation.pk %} "
-                                    class="label theme-bg2 text-white f-12">View</a></td>
+                                    class="label theme-bg2 text-white f-12">Ko'rish</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -279,23 +274,23 @@ All Equipment allocations
     </div>
     <div class="card recent-allocations tab-pane fade" id="pills-lost" role="tabpanel" aria-labelledby="pills-lost-tab">
         <div class="card-header">
-            <h5>Lost Equipment</h5>
+            <h5>Yo'qotilgan uskunalar</h5>
         </div>
         <div class="card-block px-0 py-3">
             <div class="table-responsive">
                 <table class="table" id="data-table">
                     <thead>
                         <tr>
-                            <th>Equipment</th>
+                            <th>Jihoz</th>
                             <th>
                                 {% if request.user.user_type == 'Student' or request.user.user_type == 'Lecturer' %}
-                                Allocated By
+                                Tomonidan ajratilgan
                                 {% elif request.user.user_type == 'Lab_Tech' %}
-                                Allocated To
+                                Kimga ajratilgan
                                 {% endif %}
                             </th>
-                            <th>Status</th>
-                            <th>Price</th>
+                            <th>Holat</th>
+                            <th>Narxi</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -311,14 +306,14 @@ All Equipment allocations
                                 {% endif %}
                             </td>
                             {% if allocation.equipment.is_lost %}
-                            <td><span class="badge badge-pill badge-danger">Lost</span></td>
+                            <td><span class="badge badge-pill badge-danger">Yo'qotilgan</span></td>
                             {% else %}
-                            <td><span class="badge badge-pill badge-success">Replaced</span></td>
+                            <td><span class="badge badge-pill badge-success">O'zgartirildi</span></td>
                             {% endif %}
                             <td> Ksh {{allocation.equipment.price|floatformat:2}} </td>
                             <td>{{ allocation.created_on }}</td>
                             <td><a href=" {% url 'users:allocation_details' allocation.pk %} "
-                                    class="label theme-bg2 text-white f-12">View</a></td>
+                                    class="label theme-bg2 text-white f-12">Ko'rish</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

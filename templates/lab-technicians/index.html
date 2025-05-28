@@ -10,7 +10,7 @@
     <div class="col-md-6 col-xl-3">
         <div class="card daily-sales">
             <div class="card-block">
-                <h6 class="mb-4">Equipment</h6>
+                <h6 class="mb-4">Uskunalar</h6>
                 <div class="row d-flex align-items-center">
                     <div class="col-9">
                         <h3 class="f-w-300 d-flex align-items-center m-b-0"><i
@@ -23,7 +23,7 @@
     <div class="col-md-6 col-xl-3">
         <div class="card Monthly-sales">
             <div class="card-block">
-                <h6 class="mb-4">Students</h6>
+                <h6 class="mb-4">Talabalar</h6>
                 <div class="row d-flex align-items-center">
                     <div class="col-9">
                         <h3 class="f-w-300 d-flex align-items-center  m-b-0"><i
@@ -36,7 +36,7 @@
     <div class="col-md-12 col-xl-3">
         <div class="card yearly-sales">
             <div class="card-block">
-                <h6 class="mb-4">Lecturers</h6>
+                <h6 class="mb-4">Ma'ruzachilar</h6>
                 <div class="row d-flex align-items-center">
                     <div class="col-9">
                         <h3 class="f-w-300 d-flex align-items-center  m-b-0"><i
@@ -49,7 +49,7 @@
     <div class="col-md-12 col-xl-3">
         <div class="card yearly-sales">
             <div class="card-block">
-                <h6 class="mb-4">My Allocations</h6>
+                <h6 class="mb-4">Invertizatsiyadan chiqarishlarim</h6>
                 <div class="row d-flex align-items-center">
                     <div class="col-9">
                         <h3 class="f-w-300 d-flex align-items-center  m-b-0"><i
@@ -59,26 +59,25 @@
             </div>
         </div>
     </div>
-    <!-- cards end -->
-    {% comment %} main body starts {% endcomment %}
+
     <div class="col-xl-12 col-md-12">
     <div class="card Recent-allocations">
         <div class="card-header">
-            <h5>All allocations</h5>
+            <h5>Barcha invertizatsiyadan chiqarishlar</h5>
         </div>
         <div class="card-block px-0 py-3">
             <div class="table-responsive">
                 <table class="table" id="data-table">
                     <div class="float-right">
-                        <a href="{% url 'users:new_allocation' %}" class="label theme-bg2 text-white f-12">Add allocation</a>
+                        <a href="{% url 'users:new_allocation' %}" class="label theme-bg2 text-white f-12">Qo'shish</a>
                     </div>
                     <thead>
                         <tr>
-                            <th>Allocated To.</th>
-                            <th>Equipment</th>
-                            <th>Serial No.</th>
-                            <th>Allocated By</th>
-                            <th>Status</th>
+                            <th>Kimga ajratilgan.</th>
+                            <th>Jihoz</th>
+                            <th>Seriya raqami</th>
+                            <th>Kim tomonidan ajratilgan</th>
+                            <th>Holat</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -90,12 +89,12 @@
                             <td>{{ allocation.equipment.serial_no }}</td>
                             <td>{{ allocation.allocated_by.get_full_name }}</td>
                             {% if allocation.is_returned %}
-                            <td><span class="badge badge-pill badge-success">Returned</span></td>
+                            <td><span class="badge badge-pill badge-success">Qaytgan</span></td>
                             {% else %}
-                            <td><span class="badge badge-pill badge-danger">Unreturned</span></td>
+                            <td><span class="badge badge-pill badge-danger">Qaytarilmagan</span></td>
                             {% endif %}
                             <td>{{ allocation.created_on }}</td>
-                            <td><a href=" {% url 'equipment:allocation_details' allocation.pk %} " class="label theme-bg2 text-white f-12">View</a></td>
+                            <td><a href=" {% url 'equipment:allocation_details' allocation.pk %} " class="label theme-bg2 text-white f-12">Ko'rish</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -105,20 +104,20 @@
     </div>
     <div class="card Recent-allocations">
         <div class="card-header">
-            <h5>My Recent Equipment</h5>
+            <h5>Mening so'nggi qo'shgan jihozlarim</h5>
         </div>
         <div class="card-block px-0 py-3">
             <div class="table-responsive">
                 <table class="table" id="data-table">
                    <thead>
                         <tr>
-                            <th> Serial No. </th>
-                            <th> Equipment Type </th> 
-                            <th> Lab </th>
-                            <th> Storage Unit </th>
-                            <th> Allocation Status</th>
-                            <th> Working Condition </th>
-                            <th> Date Added </th>
+                            <th> Seriya raqami </th>
+                            <th> Uskuna turi </th> 
+                            <th> Laboratoriya </th>
+                            <th> Saqlash birligi </th>
+                            <th> Ajratish holati</th>
+                            <th> Ishlash holati </th>
+                            <th> Qo'shilgan sana </th>
                             <th></th>
                         </tr>
                     </thead>
@@ -130,17 +129,17 @@
                             <td>{{ equipment.lab.name }}</td>
                             <td>{{ equipment.storage_unit.name }}</td>
                             {% if not equipment.is_allocated %}
-                            <td><span class="badge badge-pill badge-success">In Storage</span></td>
+                            <td><span class="badge badge-pill badge-success">Saqlashda</span></td>
                             {% else %}
-                            <td><span class="badge badge-pill badge-danger">Allocated</span></td>
+                            <td><span class="badge badge-pill badge-danger">Ajratilgan</span></td>
                             {% endif %}
                             {% if equipment.is_damaged == False %}
-                             <td> <span class="badge badge-pill badge-success">Working</span></td>
+                             <td> <span class="badge badge-pill badge-success">Ishlaydi</span></td>
                              {% else %}
-                              <td> <span class="badge badge-pill badge-danger">Damaged</span></td>
+                              <td> <span class="badge badge-pill badge-danger">Zarar yetgan</span></td>
                             {% endif %}
                             <td>{{ equipment.created_on }}</td>
-                            <td><a href=" {% url 'users:equipment_details' equipment.pk %} " class="label theme-bg2 text-white f-12">View</a></td>
+                            <td><a href=" {% url 'users:equipment_details' equipment.pk %} " class="label theme-bg2 text-white f-12">Ko'rish</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -150,20 +149,20 @@
     </div>
      <div class="card Recent-allocations">
         <div class="card-header">
-            <h5> Recently Added Equipment</h5>
+            <h5> Yaqinda qo'shilgan jihozlar</h5>
         </div>
         <div class="card-block px-0 py-3">
             <div class="table-responsive">
                 <table class="table" id="data-table">
                    <thead>
                         <tr>
-                            <th> Serial No. </th>
-                            <th> Equipment Type </th> 
-                            <th> Lab </th>
-                            <th> Storage Unit </th>
-                            <th> Allocation Status</th>
-                            <th> Working Condition </th>
-                            <th> Date Added </th>
+                            <th> Seriya raqami </th>
+                            <th> Jihoz turi</th> 
+                            <th> Laboratoriya </th>
+                            <th> Saqlash birligi </th>
+                            <th> Invertizatsiyadan chiqish holati</th>
+                            <th> Ishlash holati </th>
+                            <th> Qo'shilgan sana </th>
                             <th></th>
                         </tr>
                     </thead>
@@ -175,17 +174,17 @@
                             <td>{{ equipment.lab.name }}</td>
                             <td>{{ equipment.storage_unit.name }}</td>
                             {% if not equipment.is_allocated %}
-                            <td><span class="badge badge-pill badge-success">In Storage</span></td>
+                            <td><span class="badge badge-pill badge-success">Saqlashda</span></td>
                             {% else %}
-                            <td><span class="badge badge-pill badge-danger">Allocated</span></td>
+                            <td><span class="badge badge-pill badge-danger">Ajratilgan</span></td>
                             {% endif %}
                             {% if equipment.is_damaged == False %}
-                             <td> <span class="badge badge-pill badge-success">Working</span></td>
+                             <td> <span class="badge badge-pill badge-success">Ishlaydi</span></td>
                              {% else %}
-                              <td> <span class="badge badge-pill badge-danger">Damaged</span></td>
+                              <td> <span class="badge badge-pill badge-danger">Zarar yetgan</span></td>
                             {% endif %}
                             <td>{{ equipment.created_on }}</td>
-                            <td><a href=" {% url 'users:equipment_details' equipment.pk %} " class="label theme-bg2 text-white f-12">View</a></td>
+                            <td><a href=" {% url 'users:equipment_details' equipment.pk %} " class="label theme-bg2 text-white f-12">Ko'rish</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

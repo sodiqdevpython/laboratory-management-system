@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-Storage Unit Details
-{% endblock %}
 
 
 {% block styles %}
@@ -17,28 +14,28 @@ Storage Unit Details
                 <div class="row">
                     <div class="col-md-12 ">
                         <div class="m-3 p-3 shadow-sm">
-                            <h3 class="text-center py-3">Storage Unit Details</h3>
+                            <h3 class="text-center py-3">Saqlash birligi tafsilotlari</h3>
                             <div class="table-responsive">
                                 <table class="table table-striped text-center">
                                     <tbody>
                                         <tr>
-                                            <th>Name</th>
+                                            <th>Nomi</th>
                                             <td>{{ unit.name }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Room</th>
+                                            <th>Xona</th>
                                             <td>{{ unit.lab.room }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Lab</th>
+                                            <th>Laboratoriya</th>
                                             <td>{{ unit.lab.name }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Equipment Quantities</th>
+                                            <th>Uskunalar miqdori</th>
                                             <td>{{ unit.equipment_count }}</td>
                                         </tr> 
                                         <tr>
-                                            <th>Added On</th>
+                                            <th>Qo'shilgan</th>
                                             <td>{{ unit.created_on }}</td>
                                         </tr>
                                     </tbody>
@@ -47,7 +44,7 @@ Storage Unit Details
                         </div>
                         {% comment %} <div class="text-center">
                             <a href="{% url 'users:storage_unit_edit' unit.pk %}" class="mx-1">
-                                <button class="btn btn-md w-50 btn-primary">Edit</button>
+                                <button class="btn btn-md w-50 btn-primary">Tahrirlash</button>
                             </a>
                         </div> {% endcomment %}
                     </div>
@@ -57,18 +54,18 @@ Storage Unit Details
         <div class="col-xl-12 col-md-12">
         <div class="card Recent-Storage Units">
         <div class="card-header">
-            <h5 class="text-capitalize">All Equipment in  this Storage Unit</h5>
+            <h5 class="text-capitalize">Ushbu saqlash birligidagi barcha uskunalar</h5>
         </div>
         <div class="card-block px-0 py-3">
             <div class="table-responsive">
                 <table class="table" id="data-table">
                     <thead>
                         <tr>
-                            <th> Serial No. </th>
-                            <th> Equipment Type </th> 
-                            <th> Lab </th>
-                            <th> Status </th> 
-                            <th> Date Added </th>
+                            <th> Seriya raqami </th>
+                            <th> Jihoz turi </th> 
+                            <th> Laboratoriya </th>
+                            <th> Holat </th> 
+                            <th> Qo'shilgan sana </th>
                             <th></th>
                         </tr>
                     </thead>
@@ -79,12 +76,12 @@ Storage Unit Details
                             <td>{{ equipment.category.name }}</td>
                             <td>{{ equipment.lab.name }}</td>
                             {% if equipment.is_damaged == False %}
-                             <td> <span class="badge badge-pill badge-success">Working</span></td>
+                             <td> <span class="badge badge-pill badge-success">Yaroqli</span></td>
                              {% else %}
-                              <td> <span class="badge badge-pill badge-danger">Damaged</span></td>
+                              <td> <span class="badge badge-pill badge-danger">Shikastlangan</span></td>
                             {% endif %}
                             <td>{{ equipment.created_on }}</td>
-                            <td><a href=" {% url 'users:equipment_details' equipment.pk %} " class="label theme-bg2 text-white f-12">View</a></td>
+                            <td><a href=" {% url 'users:equipment_details' equipment.pk %} " class="label theme-bg2 text-white f-12">Ko'rish</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

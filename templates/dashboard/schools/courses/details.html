@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-course Details
-{% endblock %}
 
 
 {% block styles %}
@@ -17,28 +14,28 @@ course Details
                 <div class="row">
                     <div class="col-md-12 ">
                         <div class="m-3 p-3 shadow-sm">
-                            <h3 class="text-center py-3">course Details</h3>
+                            <h3 class="text-center py-3">Kurs tafsilotlari</h3>
                             <div class="table-responsive">
                                 <table class="table table-striped text-center">
                                     <tbody>
                                         <tr>
-                                            <th>Name</th>
+                                            <th>Nomi</th>
                                             <td>{{ course.name }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Department</th>
+                                            <th>Kafedra</th>
                                             <td>{{ course.department.name }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Date Added</th>
+                                            <th>Qo'shilgan sana</th>
                                             <td>{{ course.created_on }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Students</th>
+                                            <th>Talabalar</th>
                                             <td>{{ course.students_in_course_count }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Last Update</th>
+                                            <th>Oxirgi yangilash</th>
                                             <td>{{ course.updated_on }}</td>
                                         </tr>
                                     </tbody>
@@ -47,7 +44,7 @@ course Details
                         </div>
                         <div class="text-center">
                             <a href="{% url 'schools:course_edit' course.pk %}" class="mx-1">
-                                <button class="btn btn-md w-50 btn-primary">Edit</button>
+                                <button class="btn btn-md w-50 btn-primary">tahrirlash</button>
                             </a>
                         </div>
                     </div>
@@ -57,7 +54,7 @@ course Details
         <div class="col-xl-12 col-md-12">
             <div class="card Recent-courses">
                 <div class="card-header">
-                    <h5>All Students in {{course.name}}</h5>
+                    <h5>Barcha talabalar {{course.name}}</h5>
                 </div>
 
                 <div class="card-block px-0 py-3">
@@ -65,15 +62,14 @@ course Details
 
                         <table class="table" id="data-table">
                             <div class="float-right">
-                                <a href="{% url 'schools:course_add' %}" class="label theme-bg2 text-white f-12">Add
-                                    Student</a>
+                                <a href="{% url 'schools:course_add' %}" class="label theme-bg2 text-white f-12">Talaba qo'shish</a>
                             </div>
                             <thead>
                                 <tr>
-                                    <th> Name </th>
-                                    <th> Registration No. </th>
-                                    <th> YOS </th>
-                                    <th> Date Added </th>
+                                    <th> Nomi </th>
+                                    <th> Ro'yxatdan o'tish raqami </th>
+                                    <th> O'quv yili </th>
+                                    <th> Qo'shilgan </th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -85,7 +81,7 @@ course Details
                                     <td>{{ user.year_of_study }}</td>
                                     <td>{{ user.date_joined }}</td>
                                     <td><a href="{% url 'dashboard:student_details' user.pk %}"
-                                            class="label theme-bg2 text-white f-12">View</a></td>
+                                            class="label theme-bg2 text-white f-12">ko'rish</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

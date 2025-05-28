@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-All Equipment
-{% endblock %}
 
 
 {% block styles %}
@@ -13,11 +10,11 @@ All Equipment
 <div class="col-xl-12 col-md-12">
     <div class="card Recent-equipments">
         <div class="card-header">
-            <h5>All Equipment</h5>
+            <h5>Barcha jihozlar</h5>
             {% if equipments.count > 0 %}
             <div class="float-right">
                 <button class="btn btn-info" id="printBtn" value="ExportToPdf" onclick="ExportToPdf()"><span
-                        class="pcoded-micon"><i class="feather icon-printer"></i></span> Print</button>
+                        class="pcoded-micon"><i class="feather icon-printer"></i></span> chop etish</button>
             </div>
             {% endif %}
         </div>
@@ -26,19 +23,18 @@ All Equipment
             <div class="table-responsive">
                 <table class="table" id="data-table" style="background-color: #fff;">
                     <div class="float-right">
-                        <a href="{% url 'users:equipment_add' %}" class="label theme-bg2 text-white f-12">Add
-                            equipment</a>
+                        <a href="{% url 'users:equipment_add' %}" class="label theme-bg2 text-white f-12">Qo'shish</a>
                     </div>
                     <div class="content" id="EquipmentTable" >
                         <thead>
                             <tr>
-                                <th> Serial No. </th>
-                                <th> Equipment Name </th>
-                                <th> Lab </th>
-                                <th> Storage Unit </th>
-                                <th> Allocation Status</th>
-                                <th> Working Condition </th>
-                                <th> Date Added </th>
+                                <th> Seriya raqami </th>
+                                <th> Jihoz nomi </th>
+                                <th> Laboratoriya </th>
+                                <th> Saqlash birligi </th>
+                                <th> Ajratish holati</th>
+                                <th> Ishlash holati </th>
+                                <th> Qo'shilgan </th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -50,18 +46,18 @@ All Equipment
                                 <td>{{ equipment.lab.name }}</td>
                                 <td>{{ equipment.storage_unit.name }}</td>
                                 {% if not equipment.is_allocated %}
-                                <td><span class="badge badge-pill badge-success">In Storage</span></td>
+                                <td><span class="badge badge-pill badge-success">Saqlashda</span></td>
                                 {% else %}
-                                <td><span class="badge badge-pill badge-danger">Allocated</span></td>
+                                <td><span class="badge badge-pill badge-danger">Chiqarilgan</span></td>
                                 {% endif %}
                                 {% if equipment.is_damaged == False %}
-                                <td> <span class="badge badge-pill badge-success">Working</span></td>
+                                <td> <span class="badge badge-pill badge-success">Yaroqli</span></td>
                                 {% else %}
-                                <td> <span class="badge badge-pill badge-danger">Damaged</span></td>
+                                <td> <span class="badge badge-pill badge-danger">Yaroqsiz</span></td>
                                 {% endif %}
                                 <td>{{ equipment.created_on }}</td>
                                 <td><a href=" {% url 'users:equipment_details' equipment.pk %} "
-                                        class="label theme-bg2 text-white f-12">View</a></td>
+                                        class="label theme-bg2 text-white f-12">Ko'rish</a></td>
                             </tr>
                             {% endfor %}
                         </tbody>

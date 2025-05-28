@@ -10,7 +10,7 @@
     <div class="col-md-6 col-xl-3">
         <div class="card daily-sales">
             <div class="card-block">
-                <h6 class="mb-4">Equipment</h6>
+                <h6 class="mb-4">Jihoz</h6>
                 <div class="row d-flex align-items-center">
                     <div class="col-9">
                         <h3 class="f-w-300 d-flex align-items-center m-b-0"><i
@@ -23,7 +23,7 @@
     <div class="col-md-6 col-xl-3">
         <div class="card Monthly-sales">
             <div class="card-block">
-                <h6 class="mb-4">Students</h6>
+                <h6 class="mb-4">Talabalar</h6>
                 <div class="row d-flex align-items-center">
                     <div class="col-9">
                         <h3 class="f-w-300 d-flex align-items-center  m-b-0"><i
@@ -36,7 +36,7 @@
     <div class="col-md-12 col-xl-3">
         <div class="card yearly-sales">
             <div class="card-block">
-                <h6 class="mb-4">Labs</h6>
+                <h6 class="mb-4">Laboratoriyalar</h6>
                 <div class="row d-flex align-items-center">
                     <div class="col-9">
                         <h3 class="f-w-300 d-flex align-items-center  m-b-0"><i
@@ -49,7 +49,7 @@
     <div class="col-md-12 col-xl-3">
         <div class="card yearly-sales">
             <div class="card-block">
-                <h6 class="mb-4">Lab Technicians</h6>
+                <h6 class="mb-4">Laboratoriya texniklari</h6>
                 <div class="row d-flex align-items-center">
                     <div class="col-9">
                         <h3 class="f-w-300 d-flex align-items-center  m-b-0"><i
@@ -64,21 +64,21 @@
     <div class="col-xl-12 col-md-12">
     <div class="card Recent-allocations">
         <div class="card-header">
-            <h5>All allocations</h5>
+            <h5>Invertizatsiyadan chiqishlar</h5>
         </div>
         <div class="card-block px-0 py-3">
             <div class="table-responsive">
                 <table class="table" id="data-table">
                     <div class="float-right">
-                        <a href="{% url 'equipment:new_allocation' %}" class="label theme-bg2 text-white f-12">Add allocation</a>
+                        <a href="{% url 'equipment:new_allocation' %}" class="label theme-bg2 text-white f-12">Invertizatsiyadan chiqarish</a>
                     </div>
                     <thead>
                         <tr>
-                            <th>Allocated To.</th>
-                            <th>Equipment</th>
-                            <th>Quantity</th>
-                            <th>Allocated By</th>
-                            <th>Status</th>
+                            <th>Kimga ajratilgan.</th>
+                            <th>Jihoz</th>
+                            <th>Miqdor</th>
+                            <th>Kim tomonidan chiqarilgan</th>
+                            <th>Holat</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -94,12 +94,12 @@
                             <td>{{ allocation.quantity }}</td>
                             <td>{{ allocation.allocated_by.get_full_name }}</td>
                             {% if allocation.is_returned %}
-                            <td><span class="badge badge-pill badge-success">Returned</span></td>
+                            <td><span class="badge badge-pill badge-success">Qaytgan</span></td>
                             {% else %}
-                            <td><span class="badge badge-pill badge-danger">Unreturned</span></td>
+                            <td><span class="badge badge-pill badge-danger">Qaytarilmagan</span></td>
                             {% endif %}
                             <td>{{ allocation.created_on }}</td>
-                            <td><a href=" {% url 'equipment:allocation_details' allocation.pk %} " class="label theme-bg2 text-white f-12">View</a></td>
+                            <td><a href=" {% url 'equipment:allocation_details' allocation.pk %} " class="label theme-bg2 text-white f-12">ko'rish</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

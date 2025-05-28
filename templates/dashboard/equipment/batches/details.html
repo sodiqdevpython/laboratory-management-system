@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-Batch Details
-{% endblock %}
 
 
 {% block styles %}
@@ -17,32 +14,32 @@ Batch Details
                 <div class="row">
                     <div class="col-md-12 ">
                         <div class="m-3 p-3 shadow-sm">
-                            <h3 class="text-center py-3">Batch Details</h3>
+                            <h3 class="text-center py-3">To'plam tafsilotlari</h3>
                             <div class="table-responsive">
                                 <table class="table table-striped text-center">
                                     <tbody>
                                         <tr>
-                                            <th>Serial No.</th>
+                                            <th>Seriya raqami</th>
                                             <td>{{ batch.serial_no }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Equipment Type</th>
+                                            <th>Uskuna turi</th>
                                             <td><a href="{% url 'equipment:category_details' batch.category.pk %}">{{ batch.category.name }}</a></td>
                                         </tr>
                                         <tr>
-                                            <th>School</th>
+                                            <th>Universitet</th>
                                             <td><a href="{% url 'schools:school_details' batch.supplier.pk %}">{{ batch.school.name }}</a></td>
                                         </tr>
                                         <tr>
-                                            <th>Supplier</th>
+                                            <th>Yetkazib beruvchi</th>
                                             <td><a href="{% url 'equipment:supplier_details' batch.supplier.pk %}">{{ batch.supplier.name }}</a></td>
                                         </tr>
                                         <tr>
-                                            <th>Equipment Quantities</th>
+                                            <th>Uskunalar miqdori</th>
                                             <td>{{ batch.equipment_quantities }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Added On</th>
+                                            <th>Qo'shilgan</th>
                                             <td>{{ batch.created_on }}</td>
                                         </tr>
                                     </tbody>
@@ -51,7 +48,7 @@ Batch Details
                         </div>
                         <div class="text-center">
                             <a href="{% url 'equipment:batch_edit' batch.pk %}" class="mx-1">
-                                <button class="btn btn-md w-50 btn-primary">Edit</button>
+                                <button class="btn btn-md w-50 btn-primary">Tahrirlash</button>
                             </a>
                         </div>
                     </div>
@@ -61,7 +58,7 @@ Batch Details
         <div class="col-xl-12 col-md-12">
         <div class="card Recent-Batchs">
         <div class="card-header">
-            <h5 class="text-capitalize">All Equipment in  this batch</h5>
+            <h5 class="text-capitalize">Ushbu partiyadagi barcha jihozlar</h5>
         </div>
         
         {% comment %} <div class="card-block px-0 py-3">
@@ -69,14 +66,14 @@ Batch Details
                 
                 <table class="table" id="data-table">
                     <div class="float-right">
-                        <a href="{% url 'equipment:Batch_add' %}" class="label theme-bg2 text-white f-12">Add New Batch</a>
+                        <a href="{% url 'equipment:Batch_add' %}" class="label theme-bg2 text-white f-12">Yangi to'plam qo'shing</a>
                     </div>
                     <thead>
                         <tr>
-                            <th> Name </th>
-                            <th> Registration No. </th>
-                            <th> YOS </th>
-                            <th> Date Added </th>
+                            <th> Nomi </th>
+                            <th> Ro'yxatdan o'tish raqami </th>
+                            <th> O'quv yili </th>
+                            <th> Qo'shilgan sana </th>
                             <th></th>
                         </tr>
                     </thead>
@@ -87,7 +84,7 @@ Batch Details
                             <td>{{ user.registration_no }}</td>
                             <td>{{ user.year_of_study }}</td>
                             <td>{{ user.date_joined }}</td>
-                            <td><a href="{% url 'users:student_details' user.pk %}" class="label theme-bg2 text-white f-12">View</a></td>
+                            <td><a href="{% url 'users:student_details' user.pk %}" class="label theme-bg2 text-white f-12">Ko'rish</a></td>
                         </tr>
                         {% endfor %}  
                     </tbody>

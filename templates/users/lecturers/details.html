@@ -18,7 +18,6 @@
                     </div>
                     <div class="col-md-8 ">
                         <div class="m-3 p-3 shadow-sm">
-                            <h3 class="text-center py-3">Lecturer Details</h3>
                             <div class="table-responsive">
                                 <table class="table table-striped">
                                     <tbody>
@@ -27,27 +26,27 @@
                                             <td>{{ user.email }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Phone</th>
+                                            <th>Telefon raqam</th>
                                             <td>{{ user.phone_number }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Department</th>
+                                            <th>Kafedra</th>
                                             <td>{{ user.department.name }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Staff ID</th>
+                                            <th>Xodimlar identifikatori</th>
                                             <td>{{ user.staff_id }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Gender</th>
+                                            <th>Jins</th>
                                             <td>{{ user.gender }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Status</th>
+                                            <th>Holat</th>
                                             <td>
                                                 {% if user.is_active %}
-                                                <span class="badge badge-pill badge-success">Active</span> {% else %}
-                                                <span class="badge badge-pill badge-danger">Suspended</span> {% endif %}
+                                                <span class="badge badge-pill badge-success">Aktiv</span> {% else %}
+                                                <span class="badge badge-pill badge-danger">To'xtatildi</span> {% endif %}
                                             </td>
                                         </tr>
                                     </tbody>
@@ -62,7 +61,7 @@
     <div class="col-xl-12 col-md-12">
         <div class="card equipment-allocations">
             <div class="card-header">
-                <h5>All Equipment Allocations</h5>
+                <h5>Barcha jihozlarni taqsimlash</h5>
             </div>
 
             <div class="card-block px-0 py-3">
@@ -71,18 +70,17 @@
                     <table class="table" id="data-table">
                         {% comment %}
                         <div class="float-right">
-                            <a href="{% url 'equipment:equipment_add' %}" class="label theme-bg2 text-white f-12">Add
-                                equipment</a>
+                            <a href="{% url 'equipment:equipment_add' %}" class="label theme-bg2 text-white f-12">Qo'shish</a>
                         </div> {% endcomment %}
                         <thead>
                             <tr>
-                                <th> Serial No. </th>
-                                <th> Equipment Name </th>
-                                <th> Lab </th>
-                                <th> Allocated By </th>
-                                <th> Working Condition </th>
-                                <th> Allocation Status </th>
-                                <th> Date Added </th>
+                                <th> Seriya raqami </th>
+                                <th> Jihoz nomi </th>
+                                <th> Laboratoriya </th>
+                                <th> Tomonidan ajratilgan </th>
+                                <th> Ishlash holati </th>
+                                <th> Ajratish holati </th>
+                                <th> Qo'shilgan sana </th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -95,16 +93,16 @@
                                 <td>{{ allocation.allocated_by }}</a>
                                 </td>
                                 {% if not allocation.equipment.is_damaged %}
-                                <td> <span class="badge badge-pill badge-success">Working</span></td>
+                                <td> <span class="badge badge-pill badge-success">Ishlash</span></td>
                                 {% else %}
-                                <td> <span class="badge badge-pill badge-danger">Damaged</span></td>
+                                <td> <span class="badge badge-pill badge-danger">Yaroqsiz</span></td>
                                 {% endif %} {% if allocation.is_returned %}
-                                <td><span class="badge badge-pill badge-success">Returned</span></td>
+                                <td><span class="badge badge-pill badge-success">Qaytgan</span></td>
                                 {% else %}
-                                <td><span class="badge badge-pill badge-danger">Unreturned</span></td>
+                                <td><span class="badge badge-pill badge-danger">Qaytarilmagan</span></td>
                                 {% endif %}
                                 <td>{{ allocation.created_on }}</td>
-                                <td><a href=" {% url 'equipment:allocation_details' allocation.pk %} " class="label theme-bg2 text-white f-12">View</a></td>
+                                <td><a href=" {% url 'equipment:allocation_details' allocation.pk %} " class="label theme-bg2 text-white f-12">Ko'rish</a></td>
                             </tr>
                             {% endfor %}
                         </tbody>

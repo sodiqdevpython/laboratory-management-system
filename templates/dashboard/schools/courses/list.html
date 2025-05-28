@@ -13,21 +13,21 @@ All courses
 <div class="col-xl-12 col-md-12">
     <div class="card Recent-courses">
         <div class="card-header">
-            <h5>All courses</h5>
+            <h5>Barcha kurslar</h5>
         </div>
         
         <div class="card-block px-0 py-3">
             <div class="table-responsive">
                 <table class="table" id="data-table">
                     <div class="float-right">
-                        <a href="{% url 'schools:course_add' %}" class="label theme-bg2 text-white f-12">Add Course</a>
+                        <a href="{% url 'schools:course_add' %}" class="label theme-bg2 text-white f-12">Barcha kurslar</a>
                     </div>
                     <thead>
                         <tr>
-                            <th> Name </th>
-                            <th> School </th>
-                            <th> Course Code </th>
-                            <th> Date Added </th>
+                            <th> Nomi </th>
+                            <th> Universitet </th>
+                            <th> Kurs kodi </th>
+                            <th> Qo'shilgan sana </th>
                             <th></th>
                         </tr>
                     </thead>
@@ -38,7 +38,7 @@ All courses
                             <td>{{ course.school.name }}</td>
                             <td>{{ course.code }}</td>
                             <td>{{ course.created_on }}</td>
-                            <td><a href=" {% url 'schools:course_details' course.pk %} " class="label theme-bg2 text-white f-12">View</a></td>
+                            <td><a href=" {% url 'schools:course_details' course.pk %} " class="label theme-bg2 text-white f-12">ko'rish</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-School Details
-{% endblock %}
 
 
 {% block styles %}
@@ -17,32 +14,32 @@ School Details
                 <div class="row">
                     <div class="col-md-12 ">
                         <div class="m-3 p-3 shadow-sm">
-                            <h3 class="text-center py-3">School Details</h3>
+                            <h3 class="text-center py-3">Universitet tafsilotlari</h3>
                             <div class="table-responsive">
                                 <table class="table table-striped text-center">
                                     <tbody>
                                         <tr>
-                                            <th>Name</th>
+                                            <th>Nomi</th>
                                             <td>{{ school.name }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Date Added</th>
+                                            <th>Qo'shilgan sana</th>
                                             <td>{{ school.created_on }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Departments</th>
+                                            <th>Kafedra</th>
                                             <td>{{ school.departments_in_school_count }}</td>
                                         </tr>
                                         {% comment %} <tr>
-                                            <th>Courses</th>
+                                            <th>Kurslar</th>
                                             <td>{{ school.courses_in_school_count }}</td>
                                         </tr> {% endcomment %}
                                         <tr>
-                                            <th>Labs</th>
+                                            <th>Laboratoriyalar</th>
                                             <td>{{ school.labs_in_school_count }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Last Update</th>
+                                            <th>Oxirgi yangilash</th>
                                             <td>{{ school.updated_on }}</td>
                                         </tr>
                                     </tbody>
@@ -51,7 +48,7 @@ School Details
                         </div>
                         <div class="text-center">
                             <a href="{% url 'schools:school_edit' school.pk %}" class="mx-1">
-                                <button class="btn btn-md w-50 btn-primary">Edit</button>
+                                <button class="btn btn-md w-50 btn-primary">Tahrirlash</button>
                             </a>
                         </div>
                     </div>
@@ -62,20 +59,19 @@ School Details
         <div class="col-xl-12 col-md-12">
             <div class="card Recent-schools">
                 <div class="card-header">
-                    <h5>All Departments in {{school.name}} school</h5>
+                    <h5>Barcha kafedralar {{school.name}}</h5>
                 </div>
                 <div class="card-block px-0 py-3">
                     <div class="table-responsive">
 
                         <table class="table" id="data-table">
                             <div class="float-right">
-                                <a href="{% url 'schools:department_add' %}" class="label theme-bg2 text-white f-12">Add
-                                    Department</a>
+                                <a href="{% url 'schools:department_add' %}" class="label theme-bg2 text-white f-12">Kafedra qo'shish</a>
                             </div>
                             <thead>
                                 <tr>
-                                    <th> Name </th>
-                                    <th> Date Added </th>
+                                    <th> Nomi </th>
+                                    <th> Qo'shilgan </th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -84,7 +80,7 @@ School Details
                                 <tr>
                                     <td>{{ department.name }}</td>
                                     <td>{{ department.created_on }}</td>
-                                    <td><a href="{% url 'schools:department_details' department.pk %}" class="label theme-bg2 text-white f-12">View</a></td>
+                                    <td><a href="{% url 'schools:department_details' department.pk %}" class="label theme-bg2 text-white f-12">Ko'rish</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -96,22 +92,21 @@ School Details
         <div class="col-xl-12 col-md-12">
             <div class="card Recent-schools">
                 <div class="card-header">
-                    <h5>All Courses in {{school.name}} school</h5>
+                    <h5>Barcha kurslar {{school.name}}</h5>
                 </div>
                 <div class="card-block px-0 py-3">
                     <div class="table-responsive">
 
                         <table class="table" id="data-table">
                             <div class="float-right">
-                                <a href="{% url 'schools:course_add' %}" class="label theme-bg2 text-white f-12">Add
-                                    Course</a>
+                                <a href="{% url 'schools:course_add' %}" class="label theme-bg2 text-white f-12">Qo'shish</a>
                             </div>
                             <thead>
                                 <tr>
-                                    <th> Name </th>
-                                    <th> Course Code </th>
-                                    <th> Department </th>
-                                    <th> Date Added </th>
+                                    <th> Nomi </th>
+                                    <th> Kurs kodi </th>
+                                    <th> Kafedra </th>
+                                    <th> Qo'shilgan sana </th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -122,7 +117,7 @@ School Details
                                     <td>{{ course.code }}</td>
                                     <td>{{ course.department.name }}</td>
                                     <td>{{ course.created_on }}</td>
-                                    <td><a href="{% url 'schools:course_details' course.pk %}" class="label theme-bg2 text-white f-12">View</a></td>
+                                    <td><a href="{% url 'schools:course_details' course.pk %}" class="label theme-bg2 text-white f-12">Ko'rish</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -135,20 +130,19 @@ School Details
         <div class="col-xl-12 col-md-12">
             <div class="card Recent-schools">
                 <div class="card-header">
-                    <h5>All Labs in {{school.name}} school</h5>
+                    <h5>Barcha laboratoriyalar {{school.name}}</h5>
                 </div>
                 <div class="card-block px-0 py-3">
                     <div class="table-responsive">
 
                         <table class="table" id="data-table">
                             <div class="float-right">
-                                <a href="{% url 'schools:lab_add' %}" class="label theme-bg2 text-white f-12">Add
-                                    Lab</a>
+                                <a href="{% url 'schools:lab_add' %}" class="label theme-bg2 text-white f-12">Laboratoriya qo'shish</a>
                             </div>
                             <thead>
                                 <tr>
-                                    <th> Name </th>
-                                    <th> Date Added </th>
+                                    <th> Nomi </th>
+                                    <th> Qo'shilgan sana </th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -157,7 +151,7 @@ School Details
                                 <tr>
                                     <td>{{ lab.name }}</td>
                                     <td>{{ lab.created_on }}</td>
-                                    <td><a href="" class="label theme-bg2 text-white f-12">View</a></td>
+                                    <td><a href="" class="label theme-bg2 text-white f-12">Ko'rish</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

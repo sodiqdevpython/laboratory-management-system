@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-Equipment Details
-{% endblock %}
 
 
 {% block styles %}
@@ -17,11 +14,11 @@ Equipment Details
                 <div class="row">
                     <div class="col-md-12 ">
                         <div class="m-3 p-3 shadow-sm">
-                            <h3 class="text-center py-3">Equipment Details</h3>
+                            <h3 class="text-center py-3">Uskuna tafsilotlari</h3>
                             <div class="float-right d-flex">
                                 {% if not equipment.is_allocated  and request.user.user_type == 'Lab_Tech' %}
                                 <a href="{% url 'equipment:equipment_delete' equipment.pk %}" class="mx-1">
-                                <button class="btn btn-md  btn-danger">Delete</button>
+                                <button class="btn btn-md  btn-danger">O'chirish</button>
                                 {% endif %}
                                  </a>
                             </div>
@@ -29,51 +26,51 @@ Equipment Details
                                 <table class="table table-striped text-center">
                                     <tbody>
                                         <tr>
-                                            <th>Name.</th>
+                                            <th>Nomi</th>
                                             <td>{{ equipment.name }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Serial No.</th>
+                                            <th>Seriya raqami</th>
                                             <td>{{ equipment.serial_no }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Equipment Type</th>
+                                            <th>Jihoz turi</th>
                                             <td>{{ equipment.category.name }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Lab</th>
+                                            <th>Laboratoriya</th>
                                             <td>{{ equipment.lab.name }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Price</th>
+                                            <th>Narxi</th>
                                             <td>{{ equipment.price }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Working Condition</th>
+                                            <th>Ishlash holati</th>
                                             {% if not equipment.is_damaged %}
-                                            <td> <span class="badge badge-pill badge-success">Working</span></td>
+                                            <td> <span class="badge badge-pill badge-success">Yaroqli</span></td>
                                             {% else %}
-                                            <td> <span class="badge badge-pill badge-danger">Damaged</span></td>
+                                            <td> <span class="badge badge-pill badge-danger">Shikastlangan</span></td>
                                             {% endif %}
                                         </tr>
                                         <tr>
-                                            <th>Availability</th>
+                                            <th>Yaroqlilik</th>
                                             {% if not equipment.has_exceeded_shelf_life %}
-                                            <td> <span class="badge badge-pill badge-success">Yes</span></td>
+                                            <td> <span class="badge badge-pill badge-success">Ha</span></td>
                                             {% else %}
-                                            <td> <span class="badge badge-pill badge-danger">Out of Service</span></td>
+                                            <td> <span class="badge badge-pill badge-danger">Yaroqsiz</span></td>
                                             {% endif %}
                                         </tr>
                                         <tr>
-                                            <th>Allocation Status</th>
+                                            <th>Invertizatsiyadan chiqarish holati</th>
                                             {% if equipment.is_allocated  %}
-                                            <td> <span class="badge badge-pill badge-info">Allocated</span></td>
+                                            <td> <span class="badge badge-pill badge-info">Chiqgan</span></td>
                                             {% else %}
-                                            <td> <span class="badge badge-pill badge-success">In Storage</span></td>
+                                            <td> <span class="badge badge-pill badge-success">Saqlanmoqda</span></td>
                                             {% endif %}
                                         </tr>
                                         <tr>
-                                            <th>Added On</th>
+                                            <th>Qo'shilgan</th>
                                             <td>{{ equipment.created_on }}</td>
                                         </tr>
                                     </tbody>
@@ -84,23 +81,23 @@ Equipment Details
                         <div class="row text-center">
                          <div class="col-md-6">
                             <a href="{% url 'users:equipment_edit' equipment.pk %}" class="mx-1 col-md-6">
-                                <button class="btn btn-sm w-50 btn-primary">Edit</button>
+                                <button class="btn btn-sm w-50 btn-primary">Tahrirlash</button>
                             </a>
                          </div>
                          <div class="col-md-6">
                             {% if equipment.is_damaged == False %}
                             <a href="{% url 'equipment:equipment_damaged_action' pk=equipment.pk %}" class="mx-1 col-md-6">
-                                <button class="btn btn-sm w-50 btn-warning">Mark as Damaged</button>
+                                <button class="btn btn-sm w-50 btn-warning">Shikastlangan deb belgilash</button>
                             </a>
                             {% else %}
                             <a href="{% url 'equipment:equipment_working_action' pk=equipment.pk %}" class="mx-1 col-md-6">
-                                <button class="btn btn-sm w-50 btn-success">Mark as Working</button>
+                                <button class="btn btn-sm w-50 btn-success">Yaroqli deb belgilash</button>
                             </a>
                             {% endif %}
                             {% if equipment.has_exceeded_shelf_life == False %}
                                 <a href="{% url 'equipment:equipment_out_of_service_action' pk=equipment.pk %}"
                                     class="mx-1 col-md-3 mx-auto">
-                                    <button class="btn btn-sm w-50 btn-warning">Mark as Out Of Service</button>
+                                    <button class="btn btn-sm w-50 btn-warning">Xizmatdan tashqari deb belgilash</button>
                                 </a>
                             {% endif %}
                          </div>

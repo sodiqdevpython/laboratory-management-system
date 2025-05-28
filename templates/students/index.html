@@ -10,7 +10,7 @@
     <div class="col-md-6 col-xl-3">
         <div class="card daily-sales">
             <div class="card-block">
-                <h6 class="mb-4">Equipment Allocations</h6>
+                <h6 class="mb-4">Jihozlarni taqsimlash</h6>
                 <div class="row d-flex align-items-center">
                     <div class="col-9">
                         <h3 class="f-w-300 d-flex align-items-center m-b-0"><i
@@ -23,7 +23,7 @@
     <div class="col-md-6 col-xl-3">
         <div class="card Monthly-sales">
             <div class="card-block">
-                <h6 class="mb-4">Returned Allocations</h6>
+                <h6 class="mb-4">Qaytarilgan ajratmalar</h6>
                 <div class="row d-flex align-items-center">
                     <div class="col-9">
                         <h3 class="f-w-300 d-flex align-items-center  m-b-0"><i
@@ -36,7 +36,7 @@
     <div class="col-md-12 col-xl-3">
         <div class="card yearly-sales">
             <div class="card-block">
-                <h6 class="mb-4">Unreturned Allocations</h6>
+                <h6 class="mb-4">Qaytarilmaganlar</h6>
                 <div class="row d-flex align-items-center">
                     <div class="col-9">
                         <h3 class="f-w-300 d-flex align-items-center  m-b-0"><i
@@ -49,7 +49,7 @@
     <div class="col-md-12 col-xl-3">
         <div class="card yearly-sales">
             <div class="card-block">
-                <h6 class="mb-4">Damaged Equipment</h6>
+                <h6 class="mb-4">Shikastlangan uskunalar</h6>
                 <div class="row d-flex align-items-center">
                     <div class="col-9">
                         <h3 class="f-w-300 d-flex align-items-center  m-b-0"><i
@@ -64,17 +64,17 @@
     <div class="col-xl-12 col-md-12">
     <div class="card Recent-allocations">
         <div class="card-header">
-            <h5>Recent allocations</h5>
+            <h5>Yaqinda ajratilganlar</h5>
         </div>
         <div class="card-block px-0 py-3">
             <div class="table-responsive">
                 <table class="table" id="data-table">
                     <thead>
                         <tr>
-                            <th>Equipment</th>
-                            <th>Quantity</th>
-                            <th>Allocated By</th>
-                            <th>Status</th>
+                            <th>Jihoz</th>
+                            <th>Miqdor</th>
+                            <th>Tomonidan ajratilgan</th>
+                            <th>Holat</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -85,12 +85,12 @@
                             <td>{{ allocation.quantity }}</td>
                             <td>{{ allocation.allocated_by.get_full_name }}</td>
                             {% if allocation.is_returned %}
-                            <td><span class="badge badge-pill badge-success">Returned</span></td>
+                            <td><span class="badge badge-pill badge-success">Qaytgan</span></td>
                             {% else %}
                             <td><span class="badge badge-pill badge-danger">Unreturned</span></td>
                             {% endif %}
                             <td>{{ allocation.created_on }}</td>
-                            <td><a href=" {% url 'users:allocation_details' allocation.pk %} " class="label theme-bg2 text-white f-12">View</a></td>
+                            <td><a href=" {% url 'users:allocation_details' allocation.pk %} " class="label theme-bg2 text-white f-12">Ko'rish</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

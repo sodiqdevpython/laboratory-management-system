@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-All Equipment allocations
-{% endblock %}
 
 
 {% block styles %}
@@ -13,21 +10,21 @@ All Equipment allocations
 <div class="col-xl-12 col-md-12">
     <div class="card Recent-allocations">
         <div class="card-header">
-            <h5>All allocations</h5>
+            <h5>Barcha ajratmalar</h5>
         </div>
         <div class="card-block px-0 py-3">
             <div class="table-responsive">
                 <table class="table" id="data-table">
                     <div class="float-right">
-                        <a href="{% url 'equipment:new_allocation' %}" class="label theme-bg2 text-white f-12">Add allocation</a>
+                        <a href="{% url 'equipment:new_allocation' %}" class="label theme-bg2 text-white f-12">Ajratish qo'shing</a>
                     </div>
                     <thead>
                         <tr>
-                            <th>Allocated To.</th>
-                            <th>Equipment</th>
-                            <th>Serial No</th>
-                            <th>Allocated By</th>
-                            <th>Status</th>
+                            <th>Kimga ajratilgan.</th>
+                            <th>Uskunalar</th>
+                            <th>Seriya raqami</th>
+                            <th>Tomonidan ajratilgan</th>
+                            <th>Holat</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -39,12 +36,12 @@ All Equipment allocations
                             <td>{{ allocation.equipment.serial_no }}</td>
                             <td>{{ allocation.allocated_by.get_full_name }}</td>
                             {% if allocation.is_returned %}
-                            <td><span class="badge badge-pill badge-success">Returned</span></td>
+                            <td><span class="badge badge-pill badge-success">Qaytgan</span></td>
                             {% else %}
-                            <td><span class="badge badge-pill badge-danger">Unreturned</span></td>
+                            <td><span class="badge badge-pill badge-danger">Qaytarilmagan</span></td>
                             {% endif %}
                             <td>{{ allocation.created_on }}</td>
-                            <td><a href=" {% url 'equipment:allocation_details' allocation.pk %} " class="label theme-bg2 text-white f-12">View</a></td>
+                            <td><a href=" {% url 'equipment:allocation_details' allocation.pk %} " class="label theme-bg2 text-white f-12">Ko'rish</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

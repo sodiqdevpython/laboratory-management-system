@@ -1,9 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-All Departments
-{% endblock %}
-
 
 {% block styles %}
 <link href="{% static 'css/data-tables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
@@ -13,7 +9,7 @@ All Departments
 <div class="col-xl-12 col-md-12">
     <div class="card Recent-departments">
         <div class="card-header">
-            <h5>All Departments</h5>
+            <h5>Barcha bo'limlar</h5>
         </div>
         
         <div class="card-block px-0 py-3">
@@ -21,12 +17,12 @@ All Departments
                 
                 <table class="table" id="data-table">
                     <div class="float-right">
-                        <a href="{% url 'schools:department_add' %}" class="label theme-bg2 text-white f-12">Add Department</a>
+                        <a href="{% url 'schools:department_add' %}" class="label theme-bg2 text-white f-12">Bo'lim qo'shing</a>
                     </div>
                     <thead>
                         <tr>
-                            <th> Name </th>
-                            <th> Date Added </th>
+                            <th> Nomi </th>
+                            <th> Qo'shilgan sana </th>
                             <th></th>
                         </tr>
                     </thead>
@@ -35,7 +31,7 @@ All Departments
                         <tr>
                             <td>{{ department.name }}</td>
                             <td>{{ department.created_on }}</td>
-                            <td><a href=" {% url 'schools:department_details' department.pk %} " class="label theme-bg2 text-white f-12">View</a></td>
+                            <td><a href=" {% url 'schools:department_details' department.pk %} " class="label theme-bg2 text-white f-12">ko'rish</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

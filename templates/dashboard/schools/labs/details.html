@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-Lab Details
-{% endblock %}
 
 
 {% block styles %}
@@ -17,28 +14,28 @@ Lab Details
                 <div class="row">
                     <div class="col-md-12 ">
                         <div class="m-3 p-3 shadow-sm">
-                            <h3 class="text-center py-3">Lab Details</h3>
+                            <h3 class="text-center py-3">Laboratoriya tafsilotlari</h3>
                             <div class="table-responsive">
                                 <table class="table table-striped text-center">
                                     <tbody>
                                         <tr>
-                                            <th>Name</th>
+                                            <th>Nomi</th>
                                             <td>{{ lab.name }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Room</th>
+                                            <th>Xona</th>
                                             <td>{{ lab.room }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Date Added</th>
+                                            <th>Qo'shilgan sana</th>
                                             <td>{{ lab.created_on }}</td>
                                         </tr>
                                          <tr>
-                                            <th>School</th>
+                                            <th>Universitet</th>
                                             {% comment %} <td> <a href="{% url 'schools:school_details' lab.school.pk %}"> {{ lab.school.name }}</a></td> {% endcomment %}
                                         </tr> >
                                         <tr>
-                                            <th>Last Update</th>
+                                            <th>Oxirgi yangilash</th>
                                             <td>{{ lab.updated_on }}</td>
                                         </tr>
                                     </tbody>
@@ -47,7 +44,7 @@ Lab Details
                         </div>
                         <div class="text-center">
                             <a href="{% url 'schools:lab_edit' lab.pk %}" class="mx-1">
-                                <button class="btn btn-md w-50 btn-primary">Edit</button>
+                                <button class="btn btn-md w-50 btn-primary">Tahrirlash</button>
                             </a>
                         </div>
                     </div>
@@ -60,7 +57,7 @@ Lab Details
 <div class="col-xl-12 col-md-12">
             <div class="card Recent-labs">
                 <div class="card-header">
-                    <h5 class="text-capitalize">All Lab Technicians in this Lab</h5>
+                    <h5 class="text-capitalize">Ushbu laboratoriyadagi barcha laboratoriya texniklari</h5>
                 </div>
 
                 <div class="card-block px-0 py-3">
@@ -69,11 +66,11 @@ Lab Details
                         <table class="table" id="data-table">
                             <thead>
                         <tr>
-                            <th> Full Name </th>
-                            <th> Gender </th>
-                            <th> Contact </th>
-                            <th> Status </th>
-                            <th> Date Joined </th>
+                            <th> Ism </th>
+                            <th> Jins </th>
+                            <th> Telefon raqam </th>
+                            <th> Holat </th>
+                            <th> Qo'shilgan sana </th>
                             <th></th>
                         </tr>
                     </thead>
@@ -84,12 +81,12 @@ Lab Details
                             <td>{{ user.gender }}</td>
                             <td>{{ user.phone_number }}</td>
                             {% if user.is_active %}
-                            <td><span class="badge badge-pill badge-success">Active</span></td>
+                            <td><span class="badge badge-pill badge-success">Aktiv</span></td>
                             {% else %}
-                            <td><span class="badge badge-pill badge-danger">Suspended</span></td>
+                            <td><span class="badge badge-pill badge-danger">To'xtatildi</span></td>
                             {% endif %}
                             <td><i class="fas fa-circle text-c-green f-10 m-r-15"></i>{{ user.date_joined }}</td>
-                            <td><a href="{% url 'dashboard:lab_technician_details' user.pk %}" class="label theme-bg2 text-white f-12">View</a></td>
+                            <td><a href="{% url 'dashboard:lab_technician_details' user.pk %}" class="label theme-bg2 text-white f-12">Ko'rish</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

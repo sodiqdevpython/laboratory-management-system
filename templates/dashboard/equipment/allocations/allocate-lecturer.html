@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-All Students
-{% endblock %}
 
 
 {% block styles %}
@@ -13,19 +10,19 @@ All Students
 <div class="col-xl-12 col-md-12">
     <div class="card Recent-users">
         <div class="card-header">
-            <h5>Allocate equipment To Lecturer </h5>
+            <h5>Jihozlarni taqsimlash</h5>
         </div>
         <div class="card-block px-0 py-3">
             <div class="table-responsive">
                 <table class="table" id="data-table">
                     <thead>
                         <tr>
-                            <th> Full Name </th>
-                            <th> Gender </th>
-                            <th> Contact </th>
-                            <th> Staff ID </th>
-                            <th> Department </th>
-                            <th> Status </th>
+                            <th> Ism familiya </th>
+                            <th> Jinsi </th>
+                            <th> Telefon raqam </th>
+                            <th> ID </th>
+                            <th> Kafedra </th>
+                            <th> Holati </th>
                             <th></th>
                         </tr>
                     </thead>
@@ -38,14 +35,14 @@ All Students
                             <td>{{ user.staff_id }}</td>
                             <td>{{ user.department.name }}</td>
                             {% if user.is_active %}
-                            <td><span class="badge badge-pill badge-success">Active</span></td>
+                            <td><span class="badge badge-pill badge-success">Aktiv</span></td>
                             {% else %}
-                            <td><span class="badge badge-pill badge-danger">Suspended</span></td>
+                            <td><span class="badge badge-pill badge-danger">To'xtatildi</span></td>
                             {% endif %}
                             {% if request.user.user_type == 'Staff' %}
-                            <td><a href=" {% url 'equipment:allocate_equipment_action' pk=allocation.pk user_pk=user.pk  %} " class="label theme-bg3 text-white f-12">Allocate</a></td>
+                            <td><a href=" {% url 'equipment:allocate_equipment_action' pk=allocation.pk user_pk=user.pk  %} " class="label theme-bg3 text-white f-12">Ajratish</a></td>
                             {% elif request.user.user_type == 'Lab_Tech' %}
-                            <td><a href=" {% url 'users:allocate_equipment_action' pk=allocation.pk user_pk=user.pk  %} " class="label theme-bg3 text-white f-12">Allocate</a></td>
+                            <td><a href=" {% url 'users:allocate_equipment_action' pk=allocation.pk user_pk=user.pk  %} " class="label theme-bg3 text-white f-12">Ajratish</a></td>
                             {% endif %}
                             
                         </tr>

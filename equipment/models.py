@@ -56,7 +56,7 @@ class StorageUnit(CommonInfo):
 
 
     def __str__(self):
-        return f"Name:{self.name} Lab:{self.lab.name}"
+        return f"Nomi:{self.name} Laboratoriya:{self.lab.name}"
 
 class Batch(CommonInfo):
     category = models.ForeignKey(Category,on_delete=models.SET_NULL,null=True)

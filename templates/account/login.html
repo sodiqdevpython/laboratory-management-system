@@ -1,7 +1,7 @@
 {% extends 'account/base.html' %}
 {% load widget_tweaks %}
 
-{% block title %}Log In{% endblock %}
+{% block title %}Kirish{% endblock %}
 
 {% block content %}
     <div class="mt-4">
@@ -53,11 +53,8 @@
             {% endfor %}
 
             <div class="clearfix py-3">
-                <div class="float-left small mt-1">
-                    <a href="{% url 'account_reset_password' %}" style="color: #626be3">Forgot password?</a> <br>
-                </div>
                 <button class="btn float-right px-3 text-white font-weight-500" type="submit" style="background-color: #626be3">
-                    Log In
+                    Kirish
                 </button>
             </div>
         </form>

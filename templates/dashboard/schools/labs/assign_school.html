@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-All schools
-{% endblock %}
 
 
 {% block styles %}
@@ -13,7 +10,7 @@ All schools
 <div class="col-xl-12 col-md-12">
     <div class="card Recent-schools">
         <div class="card-header">
-            <h5>Assign School To {{lab.name}} </h5>
+            <h5> {{lab.name}} </h5>
         </div>
         
         <div class="card-block px-0 py-3">
@@ -21,12 +18,12 @@ All schools
                 
                 <table class="table" id="data-table">
                     <div class="float-right mt-1">
-                        <a href="{% url 'schools:school_add' %}" class="label theme-bg2 text-white f-12">Add school</a>
+                        <a href="{% url 'schools:school_add' %}" class="label theme-bg2 text-white f-12">Universitet qo'shish</a>
                     </div>
                     <thead>
                         <tr>
-                            <th> Name </th>
-                            <th> Date Added </th>
+                            <th> Nomi </th>
+                            <th> Qo'shilgan sana </th>
                             <th></th>
                         </tr>
                     </thead>
@@ -35,8 +32,8 @@ All schools
                         <tr>
                             <td>{{ school.name }}</td>
                             <td>{{ school.created_on }}</td>
-                            <td><a href=" {% url 'schools:school_assign_action' pk=lab.pk school_pk=school.pk  %} " class="label theme-bg3 text-white f-12">Add</a></td>
-                            <td><a href=" {% url 'schools:school_details' school.pk %} " class="label theme-bg2 text-white f-12">View</a></td>
+                            <td><a href=" {% url 'schools:school_assign_action' pk=lab.pk school_pk=school.pk  %} " class="label theme-bg3 text-white f-12">Qo'shish</a></td>
+                            <td><a href=" {% url 'schools:school_details' school.pk %} " class="label theme-bg2 text-white f-12">Ko'rish</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

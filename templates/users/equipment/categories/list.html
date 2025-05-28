@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-All Equipment Categories
-{% endblock %}
 
 
 {% block styles %}
@@ -13,21 +10,21 @@ All Equipment Categories
 <div class="col-xl-12 col-md-12">
     <div class="card Recent-categorys">
         <div class="card-header">
-            <h5>All Categories</h5>
+            <h5>Barcha toifalar</h5>
         </div>
         
         <div class="card-block px-0 py-3">
             <div class="table-responsive">
                 <table class="table" id="data-table">
                     <div class="float-right">
-                        <a href="{% url 'users:category_add' %}" class="label theme-bg2 text-white f-12">Add category</a>
+                        <a href="{% url 'users:category_add' %}" class="label theme-bg2 text-white f-12">Kategoriya qo'shish</a>
                     </div>
                     <thead>
                         <tr>
-                            <th> Name </th>
-                            {% comment %} <th> School </th>
-                            <th> category Code </th> {% endcomment %}
-                            <th> Date Added </th>
+                            <th> Nomi </th>
+                            {% comment %} <th> Universitet </th>
+                            <th> Kategoriya kodi </th> {% endcomment %}
+                            <th> Qo'shilgan sana </th>
                             <th></th>
                         </tr>
                     </thead>
@@ -38,7 +35,7 @@ All Equipment Categories
                             {% comment %} <td>{{ category.school.name }}</td>
                             <td>{{ category.code }}</td> {% endcomment %}
                             <td>{{ category.created_on }}</td>
-                            <td><a href=" {% url 'users:category_details' category.pk %} " class="label theme-bg2 text-white f-12">View</a></td>
+                            <td><a href=" {% url 'users:category_details' category.pk %} " class="label theme-bg2 text-white f-12">Ko'rish</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

@@ -13,23 +13,23 @@ All Students
 <div class="col-xl-12 col-md-12">
     <div class="card Recent-Users">
         <div class="card-header">
-            <h5>All Students</h5>
+            <h5>Barcha talabalar</h5>
         </div>
         <div class="card-block px-0 py-3">
             <div class="table-responsive">
                 <table class="table" id="data-table">
                     <div class="float-right">
-                        <a href="{% url 'dashboard:student_add' %}" class="label theme-bg2 text-white f-12">Add Student</a>
+                        <a href="{% url 'dashboard:student_add' %}" class="label theme-bg2 text-white f-12">Talaba qo'shish</a>
                     </div>
                     <thead>
                         <tr>
-                            <th> Full Name </th>
-                            <th> Gender </th>
-                            <th> Contact </th>
-                            <th> Registration No. </th>
-                            <th> Course </th>
-                            <th> Status </th>
-                            <th> Date Joined </th>
+                            <th> Ism, familiya </th>
+                            <th> Jins </th>
+                            <th> Aloqa </th>
+                            <th> Ro'yxatdan o'tish raqami </th>
+                            <th> Kurs </th>
+                            <th> Holat </th>
+                            <th> Qo'shilgan sana </th>
                             <th></th>
                         </tr>
                     </thead>
@@ -42,12 +42,12 @@ All Students
                             <td>{{ user.registration_no }}</td>
                             <td>{{ user.course }}</td>
                             {% if user.is_active %}
-                            <td><span class="badge badge-pill badge-success">Active</span></td>
+                            <td><span class="badge badge-pill badge-success">Aktiv</span></td>
                             {% else %}
-                            <td><span class="badge badge-pill badge-danger">Suspended</span></td>
+                            <td><span class="badge badge-pill badge-danger">Aktiv emas</span></td>
                             {% endif %}
                             <td><i class="fas fa-circle text-c-green f-10 m-r-15"></i>{{ user.date_joined }}</td>
-                            <td><a href="{% url 'dashboard:student_details' user.pk %}" class="label theme-bg2 text-white f-12">View</a></td>
+                            <td><a href="{% url 'dashboard:student_details' user.pk %}" class="label theme-bg2 text-white f-12">Ko'rish</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

@@ -17,12 +17,12 @@ allocation Details
                 <div class="row">
                     <div class="col-md-12 ">
                         <div class="m-3 p-3 shadow-sm">
-                            <h3 class="text-center py-3">Allocation Details</h3>
+                            <h3 class="text-center py-3">Ajratish tafsilotlari</h3>
                             <div class="table-responsive">
                                 <table class="table table-striped text-center">
                                     <tbody>
                                         <tr>
-                                            <th>Allocated To.</th>
+                                            <th>Kimga ajratilgan.</th>
                                             {% if allocation.allocated_to.user_type == 'Student' %}
                                             <td> <a href="{% url 'dashboard:student_details' allocation.allocated_to.id %}"> {{ allocation.allocated_to.get_full_name }} </a> </td>
                                             {% elif allocation.allocated_to.user_type == 'Lecturer' %}
@@ -32,15 +32,15 @@ allocation Details
                                             {% endif %}
                                         </tr>
                                         <tr>
-                                            <th>Equipment</th>
+                                            <th>Uskunalar</th>
                                             <td><a href="{% url 'equipment:equipment_details' allocation.equipment.id %}">{{ allocation.equipment.name }} - {{ allocation.equipment.serial_no }} </a></td>
                                         </tr>
                                         <tr>
-                                            <th>Added On</th>
+                                            <th>Qo'shilgan</th>
                                             <td>{{ allocation.created_on }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Allocated By</th>
+                                            <th>tomonidan ajratilgan</th>
                                             <td> <a href="{% url 'dashboard:lab_technician_details' allocation.allocated_by.id %}"> {{ allocation.allocated_by }} </a> </td>
                                         </tr>
                                     </tbody>
@@ -50,19 +50,19 @@ allocation Details
                         <div class="text-center">
                         {% if not allocation.is_returned %}
                             <a href="{% url 'equipment:allocation_return_action' pk=allocation.pk %}" class="mx-1">
-                                <button class="btn btn-md  btn-success">Mark as Returned</button>
+                                <button class="btn btn-md  btn-success">Qaytarilgan deb belgilang</button>
                             </a>
                         {% endif %}
                             <a href="{% url 'equipment:allocation_edit' allocation.pk %}" class="mx-1">
-                                <button class="btn btn-md btn-primary">Edit</button>
+                                <button class="btn btn-md btn-primary">Tahrirlash</button>
                             </a>
                             {% if not allocation.equipment.is_damaged %}
                             <a href="{% url 'equipment:allocation_damaged_action' pk=allocation.pk %}" class="mx-1">
-                                <button class="btn btn-md  btn-warning">Mark as damaged</button>
+                                <button class="btn btn-md  btn-warning">Buzilgan deb belgilang</button>
                             </a>
                             {% else%}
                             <a href="{% url 'equipment:allocation_damaged_action' pk=allocation.pk %}" class="mx-1">
-                                <button class="btn btn-md  btn-info">Mark as Replaced</button>
+                                <button class="btn btn-md  btn-info">O'zgartirilgan deb belgilang</button>
                             </a>
                             {% endif %}
                             

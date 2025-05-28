@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-Equipment Details
-{% endblock %}
 
 
 {% block styles %}
@@ -17,14 +14,14 @@ Equipment Details
                 <div class="row">
                     <div class="col-md-12 ">
                         <div class="m-3 p-3 shadow-sm">
-                            <h3 class="text-center py-3">Equipment Details</h3>
+                            <h3 class="text-center py-3">Jihoz tafsilotlari</h3>
                             <div class="float-right d-flex">
                                 <a href="{% url 'equipment:equipment_edit' equipment.pk %}" class="mx-1">
-                                    <button class="btn btn-sm btn-primary w-75">Edit</button>
+                                    <button class="btn btn-sm btn-primary w-75">Tahrirlash</button>
                                 </a>
                                 {% if not equipment.is_allocated %}
                                 <a href="{% url 'equipment:equipment_delete' equipment.pk %}" class="mx-1">
-                                <button class="btn btn-md  btn-danger">Delete</button>
+                                <button class="btn btn-md  btn-danger">O'chirish</button>
                                 {% endif %}
                                  </a>
                             </div>
@@ -33,54 +30,54 @@ Equipment Details
                                     <tbody>
                                         {% if equipment.name %}
                                         <tr>
-                                            <th>Name</th>
+                                            <th>Nomi</th>
                                             <td>{{ equipment.name }}</td>
                                         </tr>
                                         {% endif %}
                                         <tr>
-                                            <th>Serial No.</th>
+                                            <th>Serial raqami</th>
                                             <td>{{ equipment.serial_no }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Equipment Type</th>
+                                            <th>Jihoz turi</th>
                                             <td>{{ equipment.category.name }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Cost</th>
-                                            <td>Ksh {{ equipment.price }}</td>
+                                            <th>Narxi</th>
+                                            <td>uzs {{ equipment.price }}</td>
                                         </tr>
                                         {% if equipment.batch %}
                                         <tr>
-                                            <th>School</th>
+                                            <th>Universitet</th>
                                             <td>{{ equipment.batch.s }}</td>
                                         </tr>
                                         {% endif %}
                                         <tr>
-                                            <th>Working Condition</th>
+                                            <th>Ishlash holati</th>
                                             {% if equipment.is_damaged or equipment.has_exceeded_shelf_life  %}
-                                            <td> <span class="badge badge-pill badge-danger">Damaged</span></td>
+                                            <td> <span class="badge badge-pill badge-danger">Ishdan chiqgan</span></td>
                                             {% elif not equipment.is_damaged and not equipment.has_exceeded_shelf_life %}
-                                            <td> <span class="badge badge-pill badge-success">Working</span></td>
+                                            <td> <span class="badge badge-pill badge-success">Yaroqli</span></td>
                                             {% endif %}
                                         </tr>
                                         <tr>
-                                            <th>Availability</th>
+                                            <th>Yaroqlilik</th>
                                             {% if not equipment.has_exceeded_shelf_life %}
-                                            <td> <span class="badge badge-pill badge-success">Yes</span></td>
+                                            <td> <span class="badge badge-pill badge-success">Ha</span></td>
                                             {% else %}
-                                            <td> <span class="badge badge-pill badge-danger">Out of Service</span></td>
+                                            <td> <span class="badge badge-pill badge-danger">Ishdan chiqgan</span></td>
                                             {% endif %}
                                         </tr>
                                         <tr>
-                                            <th>Allocation Status</th>
+                                            <th>Chiqarish holati</th>
                                             {% if equipment.is_allocated  %}
-                                            <td> <span class="badge badge-pill badge-info">Allocated</span></td>
+                                            <td> <span class="badge badge-pill badge-info">Chiqarish</span></td>
                                             {% else %}
-                                            <td> <span class="badge badge-pill badge-success">In Storage</span></td>
+                                            <td> <span class="badge badge-pill badge-success">Saqlashda</span></td>
                                             {% endif %}
                                         </tr>
                                         <tr>
-                                            <th>Added On</th>
+                                            <th>Qo'shilgan</th>
                                             <td>{{ equipment.created_on }}</td>
                                         </tr>
                                     </tbody>
@@ -93,7 +90,7 @@ Equipment Details
                                 {% if equipment.has_exceeded_shelf_life == False %}
                                 <a href="{% url 'equipment:equipment_out_of_service_action' pk=equipment.pk %}"
                                     class="mx-1 col-md-6">
-                                    <button class="btn btn-sm w-50 btn-warning">Mark as Out Of Service</button>
+                                    <button class="btn btn-sm w-50 btn-warning">Xizmatdan tashqari deb belgilang</button>
                                 </a>
                                 {% endif %}
                             </div>
@@ -102,12 +99,12 @@ Equipment Details
                                 {% if equipment.is_damaged == False %}
                                 <a href="{% url 'equipment:equipment_damaged_action' pk=equipment.pk %}"
                                     class="mx-1 col-md-6">
-                                    <button class="btn btn-sm w-50 btn-warning">Mark as Damaged</button>
+                                    <button class="btn btn-sm w-50 btn-warning">Buzilgan deb belgilang</button>
                                 </a>
                                 {% else %}
                                 <a href="{% url 'equipment:equipment_working_action' pk=equipment.pk %}"
                                     class="mx-1 col-md-6">
-                                    <button class="btn btn-sm w-50 btn-success">Mark as Working</button>
+                                    <button class="btn btn-sm w-50 btn-success">Ishlayotgan deb belgilang</button>
                                 </a>
                                 {% endif %}
                                 {% if equipment.is_allocated %}
@@ -115,12 +112,12 @@ Equipment Details
                                 {% if not equipment.is_lost  %}
                                 <a href="{% url 'equipment:equipment_lost_action' pk=equipment.pk %}"
                                     class="mx-1 col-md-6">
-                                    <button class="btn btn-sm w-50 btn-warning">Mark as Lost</button>
+                                    <button class="btn btn-sm w-50 btn-warning">Yo'qotilgan deb belgilang</button>
                                 </a>
                                 {% else %}
                                 <a href="{% url 'equipment:equipment_found_action' pk=equipment.pk %}"
                                     class="mx-1 col-md-6">
-                                    <button class="btn btn-sm w-50 btn-success">Mark as Returned</button>
+                                    <button class="btn btn-sm w-50 btn-success">Qaytarilgan deb belgilang</button>
                                 </a>
                                 {% endif %}
                             </div>

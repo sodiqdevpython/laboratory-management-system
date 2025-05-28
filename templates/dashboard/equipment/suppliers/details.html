@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-Supplier Details
-{% endblock %}
 
 
 {% block styles %}
@@ -17,16 +14,16 @@ Supplier Details
                 <div class="row">
                     <div class="col-md-12 ">
                         <div class="m-3 p-3 shadow-sm">
-                            <h3 class="text-center py-3">Supplier Details</h3>
+                            <h3 class="text-center py-3">Yetkazib beruvchi tafsilotlari</h3>
                             <div class="table-responsive">
                                 <table class="table table-striped text-center">
                                     <tbody>
                                         <tr>
-                                            <th>Name</th>
+                                            <th>Nomi</th>
                                             <td>{{ supplier.name }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Phone Number</th>
+                                            <th>Telefon raqami</th>
                                             <td>{{ supplier.phone_number }}</td>
                                         </tr>
                                         <tr>
@@ -34,15 +31,15 @@ Supplier Details
                                             <td>{{ supplier.email }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Batches Supplied</th>
+                                            <th>Taqdim etilgan partiyalar</th>
                                             <td>{{ supplier.batches.count }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Date Added</th>
+                                            <th>Qo'shilgan sana</th>
                                             <td>{{ supplier.created_on }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Last Update</th>
+                                            <th>Oxirgi yangilash</th>
                                             <td>{{ supplier.updated_on }}</td>
                                         </tr>
                                     </tbody>
@@ -51,7 +48,7 @@ Supplier Details
                         </div>
                         <div class="text-center">
                             <a href="{% url 'equipment:supplier_edit' supplier.pk %}" class="mx-1">
-                                <button class="btn btn-md w-50 btn-primary">Edit</button>
+                                <button class="btn btn-md w-50 btn-primary">tahrirlash</button>
                             </a>
                         </div>
                     </div>
@@ -62,23 +59,22 @@ Supplier Details
         <div class="col-xl-12 col-md-12">
             <div class="card Recent-suppliers">
                 <div class="card-header">
-                    <h5>All Batches Supplied</h5>
+                    <h5>Barcha partiyalar yetkazib beriladi</h5>
                 </div>
                 <div class="card-block px-0 py-3">
                     <div class="table-responsive">
 
                         <table class="table" id="data-table">
                             <div class="float-right">
-                                <a href="{% url 'equipment:batch_add' %}" class="label theme-bg2 text-white f-12">Add
-                                    Batch</a>
+                                <a href="{% url 'equipment:batch_add' %}" class="label theme-bg2 text-white f-12">To'plam qo'shish</a>
                             </div>
                            <thead>
                         <tr>
-                            <th>Serial No.</th>
-                            <th>School</th>
-                            <th>Equipment Type</th>
-                            <th>Equipment Quantities</th>
-                            <th>Date Added</th>
+                            <th>Seriya raqami</th>
+                            <th>Universitet</th>
+                            <th>Jihoz turi</th>
+                            <th>Uskunalar miqdori</th>
+                            <th>Qo'shilgan sana</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -90,7 +86,7 @@ Supplier Details
                             <td>{{ batch.category }}</td>
                             <td>{{ batch.equipment_quantities }}</td>
                             <td>{{ batch.created_on }}</td>
-                            <td><a href=" {% url 'equipment:batch_details' batch.pk %} " class="label theme-bg2 text-white f-12">View</a></td>
+                            <td><a href=" {% url 'equipment:batch_details' batch.pk %} " class="label theme-bg2 text-white f-12">ko'rish</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

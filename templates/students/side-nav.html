@@ -6,14 +6,13 @@
                 <div class="b-bg">
                     <i class="feather icon-trending-up"></i>
                 </div>
-                <span class="b-title">TUK Lab</span>
+                
             </a>
             {% elif request.user.user_type == 'Lecturer' %}
             <a href="{% url 'users:lecturer_dashboard_index' %}" class="b-brand">
                 <div class="b-bg">
                     <i class="feather icon-trending-up"></i>
                 </div>
-                <span class="b-title">TUK Lab</span>
             </a>
             {% endif %}
             <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
@@ -21,29 +20,29 @@
         <div class="navbar-content scroll-div">
             <ul class="nav pcoded-inner-navbar">
                 <li class="nav-item pcoded-menu-caption">
-                    <label>Navigation</label>
+                    <label>Navigatsiya</label>
                 </li>
                 <li class="nav-item active">
                 {% if request.user.user_type == 'Student' %}
                 <a href=" {% url 'users:student_dashboard_index' %} " class="nav-link "><span class="pcoded-micon"><i
-                                class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+                                class="feather icon-home"></i></span><span class="pcoded-mtext">Boshqaruv paneli</span></a>
                 {% elif request.user.user_type == 'Lecturer' %}
                 <a href=" {% url 'users:lecturer_dashboard_index' %} " class="nav-link "><span class="pcoded-micon"><i
-                                class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+                                class="feather icon-home"></i></span><span class="pcoded-mtext">Boshqaruv paneli</span></a>
                 {% endif %}
                 </li>
                 <li class="nav-item pcoded-menu-caption">
-                    <label>Allocations</label>
+                    <label>Ajratishlar</label>
                 </li>
                 <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
                     <a href="{% url 'users:allocations_list' %}" class="nav-link "><span class="pcoded-micon"><i
                                 class="feather icon-share-2"></i></span><span
-                            class="pcoded-mtext">My Allocations</span></a>
+                            class="pcoded-mtext">Mening taqsimotlarim</span></a>
                 </li>
                 <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
                     <a href="{% url 'users:user_profile' %}" class="nav-link "><span class="pcoded-micon"><i
                                 class="feather icon-user"></i></span><span
-                            class="pcoded-mtext">My Profile</span></a>
+                            class="pcoded-mtext">Mening profilim</span></a>
                 </li>
             </ul>
         </div>
