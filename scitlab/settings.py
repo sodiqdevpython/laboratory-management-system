@@ -125,10 +125,13 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'dashboard:index'
 LOGOUT_REDIRECT_URL = 'login'
 
-STATIC_URL = '/static/'
-STATIC_ROOT = 'static'
+STATIC_URL = 'static/'
+import os
 
-MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+MEDIA_URL = 'media/'
 MEDIA_ROOT = 'media'
 
 MESSAGE_TAGS = {
